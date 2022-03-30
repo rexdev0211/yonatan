@@ -1,6 +1,7 @@
-import { Tooltip } from "react-tippy";
+import Link from "next/link";
+import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { IoIosClose } from "react-icons/io";
-import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
+import { Tooltip } from "react-tippy";
 
 const AboutOverlay = ({ activeStatus, getActiveStatus }) => {
   return (
@@ -25,13 +26,48 @@ const AboutOverlay = ({ activeStatus, getActiveStatus }) => {
         <div className="about-overlay__content-container d-flex flex-column justify-content-between h-100">
           <div className="about-overlay__widget-wrapper">
             <div className="about-widget">
-              <h2 className="about-widget__title">About Us</h2>
-              <p>
-                At Lezada, we put a strong emphasis on simplicity, quality and
-                usefulness of fashion products over other factors. Our fashion
-                items never get outdated. They are not short-lived as normal
-                fashion clothes.
-              </p>
+              <h2 className="about-widget__title">Menu</h2>
+              <nav className="header-content__navigation space-pr--15 space-pl--15 d-none d-lg-block">
+                <ul style={{ display: 'flex', flexDirection: 'column' }}>
+                  <li>
+                    <Link href="/" as={process.env.PUBLIC_URL + "/"} style={{ height: '5vh' }}>
+                      <a>Home</a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/other/about"
+                      as={process.env.PUBLIC_URL + "/other/about"}
+                    >
+                      <a>About</a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/shop/left-sidebar"
+                      as={process.env.PUBLIC_URL + "/shop/left-sidebar"} style={{ height: '5vh' }}
+                    >
+                      <a>Shop</a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/shop/order-tracking"
+                      as={process.env.PUBLIC_URL + "/other/order-tracking"} style={{ height: '5vh' }}
+                    >
+                      <a>Custom Orders</a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/other/contact"
+                      as={process.env.PUBLIC_URL + "/other/contact"} style={{ height: '5vh' }}
+                    >
+                      <a>Contact</a>
+                    </Link>
+                  </li>
+                </ul>
+              </nav>
             </div>
           </div>
           <div className="about-overlay__contact-widget">

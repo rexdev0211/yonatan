@@ -40,11 +40,11 @@ header {
     .header-content__logo {
       .dark-logo {
         display: none;
-        width: 200px;
+        width: 150px;
       }
       .white-logo {
         display: block;
-        width: 200px;
+        width: 150px;
       }
 
       button {
@@ -152,15 +152,24 @@ header {
 
     &.white-content {
       .header-content__logo {
+        a {
+          display: flex;
+          justify-content: center;  
+        }
         .dark-logo {
           display: block;
+          width: 30%;
         }
         .white-logo {
           display: none;
+          width: 30%;
         }
 
         button {
           color: $black--two;
+          font-size: 30px;
+          margin-right: 10px;
+          padding: 0;
         }
       }
 
@@ -206,6 +215,7 @@ header {
     }
     .multilevel-header {
       padding-top: 0;
+      
 
       @include respond(extra-large-mobile) {
         padding-top: 30px;
@@ -217,7 +227,9 @@ header {
 
       &__top {
         display: none;
-        margin-top: 30px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        
 
         @include respond(extra-large-mobile) {
           display: flex;
