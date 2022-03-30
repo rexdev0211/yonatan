@@ -119,6 +119,96 @@ header {
     }
   }
 
+  &.dark-content {
+    .header-content__logo {
+      .white-logo {
+        display: none;
+        width: 150px;
+      }
+      .dark-logo {
+        display: block;
+        width: 150px;
+      }
+
+      button {
+        color: $white;
+      }
+    }
+
+    .header-content__navigation {
+      & > ul {
+        & > li {
+          & > a {
+            color: $black;
+            &:after {
+              background-color: $black;
+            }
+            &:hover {
+              &:after {
+                background-color: $black;
+              }
+            }
+          }
+          & > svg {
+            fill: $black;
+          }
+          &:hover {
+            & > svg {
+              fill: $black;
+            }
+          }
+        }
+      }
+    }
+
+    .header-content__icons, .userIcon {
+      & > ul {
+        & > li {
+          & > a,
+          & > button {
+            & > svg {
+              fill: $black;
+            }
+          }
+        }
+      }
+    }
+
+    .aboutIcon {
+      & > ul {
+        & > li {
+          & > a,
+          & > button {
+            & > svg {
+              fill: $black;
+            }
+          }
+        }
+      }
+    }
+
+    .change-dropdown {
+      & > span,
+      & > svg {
+        color: $white;
+      }
+      & > ul {
+        & > li {
+          & > button {
+            color: $black;
+          }
+        }
+      }
+    }
+
+    .customChange {
+      & > span,
+      & > svg {
+        color: $white;
+      }
+    }
+  }
+
   &.is-sticky {
     position: fixed;
     z-index: 999;
@@ -150,7 +240,8 @@ header {
       }
     }
 
-    &.white-content {
+    &.white-content,
+    &.dark-content {
       .header-content__logo {
         a {
           display: flex;
@@ -167,9 +258,6 @@ header {
 
         button {
           color: $black--two;
-          font-size: 30px;
-          margin-right: 10px;
-          padding: 0;
         }
       }
 
@@ -210,6 +298,7 @@ header {
         }
       }
     }
+
     .header-top-area {
       display: none !important;
     }
