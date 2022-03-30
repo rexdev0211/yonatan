@@ -9,7 +9,6 @@ import UserIcon from '../../../public/assets/images/yonatan-images/user.svg';
 import AboutOverlay from "./elements/AboutOverlay";
 import CartOverlay from "./elements/CartOverlay";
 import MobileMenu from "./elements/MobileMenu";
-import Navigation from "./elements/Navigation";
 import SearchOverlay from "./elements/SearchOverlay";
 import WishlistOverlay from "./elements/WishlistOverlay";
 
@@ -51,8 +50,22 @@ const HeaderHome = ({ aboutOverlay, cartItems, wishlistItems }) => {
         <div className="multilevel-header">
           <Container className="wide">
             <Row className="multilevel-header__top d-none d-lg-flex">
-              <Col lg={4} className="d-lg-block">
-                <div className="d-flex">
+              <Col lg={4} className="d-lg-flex align-items-center">
+                <div className="header-content__logo d-flex align-items-center space-pr--15">
+                  <button
+                    onClick={() => {
+                      setOffCanvasAboutActive(true);
+                      document
+                        .querySelector("body")
+                        .classList.add("overflow-hidden");
+                    }}
+                    className={`${aboutOverlay === false
+                      ? "d-none"
+                      : "about-overlay-trigger d-none d-lg-block"
+                      }`}
+                  >
+                    <IoIosMenu />
+                  </button>
                   <div className="language-change change-dropdown custom">
                     <span>English</span> <IoIosArrowDown />
                     <ul>
@@ -99,7 +112,7 @@ const HeaderHome = ({ aboutOverlay, cartItems, wishlistItems }) => {
                   </Link>
                 </div>
               </Col>
-              <Col xs={6} lg={4} className="text-right">
+              <Col xs={6} lg={4} className="text-right" style={{ display: 'flex', justifyContent: 'end', alignItems: 'center' }}>
                 <div className="header-content__icons">
                   <ul className="d-lg-block">
                     <li>
@@ -224,7 +237,6 @@ const HeaderHome = ({ aboutOverlay, cartItems, wishlistItems }) => {
                 className="text-center d-none d-lg-block space-mt--40"
               >
                 {/* navigation */}
-                <Navigation />
               </Col>
             </Row>
           </Container>
