@@ -1,13 +1,13 @@
 import { Col, Container, Row } from "react-bootstrap";
 import { connect } from "react-redux";
 import { ImageCtaAbout } from "../../components/Cta";
-import { LayoutAbout } from "../../components/Layout";
+import { LayoutHome } from "../../components/Layout";
 import { getProducts } from "../../lib/product";
 
 
 const Home = ({ products }) => {
   return (
-    <LayoutAbout>
+    <LayoutHome page={"about"}>
 
       <ImageCtaAbout />
 
@@ -376,7 +376,7 @@ const Home = ({ products }) => {
         </Col>
       </div>
 
-    </LayoutAbout>
+    </LayoutHome>
   );
 };
 

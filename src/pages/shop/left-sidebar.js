@@ -94,7 +94,7 @@ const LeftSidebar = () => {
   }, [offset, search, sortType, sortValue, filterSortType, filterSortValue]);
 
   return (
-    <LayoutHome>
+    <LayoutHome page={"about"}>
       {/* breadcrumb */}
       <ImageCtaShop />
       <div className="shop-page-content">

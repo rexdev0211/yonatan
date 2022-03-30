@@ -1,7 +1,7 @@
 import { Col, Container, Row } from "react-bootstrap";
 import { IoIosCall, IoIosClock, IoIosMail, IoIosPin } from "react-icons/io";
 import { ImageCtaContact } from "../../components/Cta";
-import { LayoutAbout } from "../../components/Layout";
+import { LayoutHome } from "../../components/Layout";
 import {
   SectionTitleOne,
   SectionTitleTwo
@@ -9,7 +9,7 @@ import {
 
 const Contact = () => {
   return (
-    <LayoutAbout>
+    <LayoutHome page={"about"}>
       {/* breadcrumb */}
       <ImageCtaContact />
 
@@ -143,7 +143,7 @@ const Contact = () => {
           </Container>
         </div>
       </div>
-    </LayoutAbout>
+    </LayoutHome>
   );
 };
 

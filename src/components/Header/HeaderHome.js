@@ -12,7 +12,7 @@ import MobileMenu from "./elements/MobileMenu";
 import SearchOverlay from "./elements/SearchOverlay";
 import WishlistOverlay from "./elements/WishlistOverlay";
 
-const HeaderHome = ({ aboutOverlay, cartItems, wishlistItems }) => {
+const HeaderHome = ({ aboutOverlay, cartItems, wishlistItems, page }) => {
   const [scroll, setScroll] = useState(0);
   const [headerTop, setHeaderTop] = useState(0);
   const [headerHeight, setHeaderHeight] = useState(0);
@@ -44,7 +44,7 @@ const HeaderHome = ({ aboutOverlay, cartItems, wishlistItems }) => {
   return (
     <Fragment>
       <header
-        className={`topbar-shadow transparent-style white-content ${scroll > headerTop ? "is-sticky" : ""
+        className={`topbar-shadow transparent-style ${page === 'about' ? "dark-content" : "white-content"} ${scroll > headerTop ? "is-sticky" : ""
           }`}
       >
         <div className="multilevel-header">
