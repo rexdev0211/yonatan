@@ -1,4 +1,5 @@
 import Link from "next/link";
+import useTranslation from 'next-translate/useTranslation';
 import { Fragment, useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import {
@@ -11,8 +12,13 @@ import CartOverlay from "./elements/CartOverlay";
 import MobileMenu from "./elements/MobileMenu";
 import SearchOverlay from "./elements/SearchOverlay";
 import WishlistOverlay from "./elements/WishlistOverlay";
+import i18nConfig from '../../../i18n';
+
+const { locales } = i18nConfig;
 
 const HeaderHome = ({ aboutOverlay, cartItems, wishlistItems, page }) => {
+  const { t, lang } = useTranslation('common');
+
   const [scroll, setScroll] = useState(0);
   const [headerTop, setHeaderTop] = useState(0);
   const [headerHeight, setHeaderHeight] = useState(0);
@@ -55,9 +61,6 @@ const HeaderHome = ({ aboutOverlay, cartItems, wishlistItems, page }) => {
                   <button
                     onClick={() => {
                       setOffCanvasAboutActive(true);
-                      document
-                        .querySelector("body")
-                        .classList.add("overflow-hidden");
                     }}
                     className={`${aboutOverlay === false
                       ? "d-none"
@@ -67,14 +70,23 @@ const HeaderHome = ({ aboutOverlay, cartItems, wishlistItems, page }) => {
                     <IoIosMenu />
                   </button>
                   <div className="language-change change-dropdown custom">
-                    <span>English</span> <IoIosArrowDown />
+                    <span>{t(`language-${lang}`)}</span> <IoIosArrowDown />
                     <ul>
-                      <li>
-                        <button>English</button>
+                      {locales.map((lng, i) => (
+                        <li key={i}>
+                          <Link href="/" locale={lng}>{t(`language-${lng}`)}</Link>
+                        </li>
+                      ))}
+                      {/* <li>
+                        
+                          <Link href="/" locale={"en"}><a>English</a></Link>
+                        
                       </li>
                       <li>
-                        <button>Deustch</button>
-                      </li>
+                        
+                          <Link href="/" locale={"en"}><a>Hebrew</a></Link>
+                        
+                      </li> */}
                     </ul>
                   </div>
                   <span className="header-separator customLine">|</span>
@@ -119,9 +131,6 @@ const HeaderHome = ({ aboutOverlay, cartItems, wishlistItems, page }) => {
                       <button
                         onClick={() => {
                           setOffCanvasSearchActive(true);
-                          document
-                            .querySelector("body")
-                            .classList.add("overflow-hidden");
                         }}
                       >
                         <IoIosSearch />
@@ -141,9 +150,6 @@ const HeaderHome = ({ aboutOverlay, cartItems, wishlistItems, page }) => {
                       <button
                         onClick={() => {
                           setOffCanvasWishlistActive(true);
-                          document
-                            .querySelector("body")
-                            .classList.add("overflow-hidden");
                         }}
                       >
                         <IoIosHeartEmpty />
@@ -160,9 +166,6 @@ const HeaderHome = ({ aboutOverlay, cartItems, wishlistItems, page }) => {
                       <button
                         onClick={() => {
                           setOffCanvasCartActive(true);
-                          document
-                            .querySelector("body")
-                            .classList.add("overflow-hidden");
                         }}
                       >
                         <IoIosCart />
