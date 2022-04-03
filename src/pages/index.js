@@ -1,3 +1,5 @@
+import useTranslation from "next-translate/useTranslation";
+import { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { connect } from "react-redux";
 import { ImageTextContent } from "../components/About";
@@ -10,10 +12,26 @@ import brandLogoData from "../data/brand-logos/brand-logo-one.json";
 import heroSliderData from "../data/hero-sliders/hero-slider-three.json";
 import teamData from "../data/team-members/team-one.json";
 import { getProducts } from "../lib/product";
+import API from '../api';
 
+const productsLimit = 9;
 
-const Home = ({ products }) => {
-  console.log('products: ', products);
+const Home = () => {
+  const { t, lang } = useTranslation('home');
+
+  const [products, setProducts] = useState([]);
+
+  useEffect(async () => {
+    console.log('aaa');
+    try {
+      const response = await API.get('/products/popular/list', { params: { limit: productsLimit } });
+      console.log('popular', response);
+      setProducts(response.data);
+    } catch (e) {
+      console.log('error', e);
+    }
+  }, []);
+
   return (
     <LayoutHome>
 
@@ -22,14 +40,14 @@ const Home = ({ products }) => {
         spaceBottomClass="space-mb--r100"
       />
 
-      <ImageCtaFirst spaceBottomClass="space-mb--r100" />
+      <ImageCtaFirst t={t} spaceBottomClass="space-mb--r100" />
       <ImageCtaSecond spaceBottomClass="space-mb--r100" />
 
       <ImageTextContent />
 
       <BrandLogo brandLogoData={brandLogoData} />
 
-      <ProductSlider products={products} />
+      {products.length > 0 && <ProductSlider products={products} />}
 
       <ImageCtaThird />
 
@@ -65,7 +83,7 @@ const Home = ({ products }) => {
           <Row>
             <Col xl={6} lg={6} className="mr-auto" style={{ paddingLeft: "70px", paddingRight: "70px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
               <div className="about-widget space-mb--35">
-                <h2 className="widget-title space-mb--25 fontStyleMain">The best time to make dreams come true is now</h2>
+                <h2 className="widget-title space-mb--25 fontStyleMain">{t('best-time')}</h2>
                 <p className="widget-content fontStyleDetail">
                   I invite you to contact me and start the exciting journey, together.
                 </p>
@@ -113,11 +131,4 @@ const Home = ({ products }) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  const products = state.productData;
-  return {
-    products: getProducts(products, "Fashion Rings", "Fashion Rings", 9)
-  };
-};
-
-export default connect(mapStateToProps)(Home);
+export default Home;

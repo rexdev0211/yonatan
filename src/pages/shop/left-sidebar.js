@@ -18,6 +18,7 @@ import initTags from '../../data/tags.json';
 import API from '../../api';
 
 const pageLimit = 12;
+const popularLimit = 3;
 
 const LeftSidebar = () => {
   const [layout, setLayout] = useState("grid four-column");
@@ -62,7 +63,7 @@ const LeftSidebar = () => {
 
   useEffect(async () => {
     console.log('aaa');
-    const response = await API.get('/products/popular/list');
+    const response = await API.get('/products/popular/list', { params: { limit: popularLimit } });
     console.log('popular', response);
     setPopularProducts(response.data);
   }, []);
@@ -97,69 +98,71 @@ const LeftSidebar = () => {
     <LayoutHome page={"about"}>
       {/* breadcrumb */}
       <ImageCtaShop />
-      <div className="shop-page-content">
-        {/* shop page header */}
-        <ShopHeader
-          getLayout={getLayout}
-          getFilterSortParams={getFilterSortParams}
-          productCount={totalProducts}
-          sortedProductCount={products.length}
-          shopTopFilterStatus={shopTopFilterStatus}
-          setShopTopFilterStatus={setShopTopFilterStatus}
-        />
-
-        {/* shop header filter */}
-        <SlideDown closed={shopTopFilterStatus ? false : true}>
-          <ShopFilter 
-            categories={categories}
-            colors={colors}
-            sizes={sizes}
-            tags={tags}
-            getSortParams={getSortParams} 
+      {products.length > 0 && (
+        <div className="shop-page-content">
+          {/* shop page header */}
+          <ShopHeader
+            getLayout={getLayout}
+            getFilterSortParams={getFilterSortParams}
+            productCount={totalProducts}
+            sortedProductCount={products.length}
+            shopTopFilterStatus={shopTopFilterStatus}
+            setShopTopFilterStatus={setShopTopFilterStatus}
           />
-        </SlideDown>
 
-        {/* shop page body */}
-        <div className="shop-page-content__body space-mt--r130 space-mb--r130">
-          <Container>
-            <Row>
-              <Col
-                lg={3}
-                className="order-2 order-lg-1 space-mt-mobile-only--50"
-              >
-                {/* shop sidebar */}
-                <ShopSidebar
-                  categories={categories}
-                  colors={colors}
-                  popularProducts={popularProducts}
-                  searchProducts={setSearch}
-                  getSortParams={getSortParams}
-                />
-              </Col>
+          {/* shop header filter */}
+          <SlideDown closed={shopTopFilterStatus ? false : true}>
+            <ShopFilter 
+              categories={categories}
+              colors={colors}
+              sizes={sizes}
+              tags={tags}
+              getSortParams={getSortParams} 
+            />
+          </SlideDown>
 
-              <Col lg={9} className="order-1 order-lg-2">
-                {/* shop products */}
-                <ShopProducts layout={layout} products={products} />
-
-                {/* shop product pagination */}
-                <div className="pro-pagination-style">
-                  <Paginator
-                    totalRecords={totalProducts}
-                    pageLimit={pageLimit}
-                    pageNeighbours={2}
-                    setOffset={setOffset}
-                    currentPage={currentPage}
-                    setCurrentPage={setCurrentPage}
-                    pageContainerClass="mb-0 mt-0"
-                    pagePrevText="«"
-                    pageNextText="»"
+          {/* shop page body */}
+          <div className="shop-page-content__body space-mt--r130 space-mb--r130">
+            <Container>
+              <Row>
+                <Col
+                  lg={3}
+                  className="order-2 order-lg-1 space-mt-mobile-only--50"
+                >
+                  {/* shop sidebar */}
+                  <ShopSidebar
+                    categories={categories}
+                    colors={colors}
+                    popularProducts={popularProducts}
+                    searchProducts={setSearch}
+                    getSortParams={getSortParams}
                   />
-                </div>
-              </Col>
-            </Row>
-          </Container>
+                </Col>
+
+                <Col lg={9} className="order-1 order-lg-2">
+                  {/* shop products */}
+                  <ShopProducts layout={layout} products={products} />
+
+                  {/* shop product pagination */}
+                  <div className="pro-pagination-style">
+                    <Paginator
+                      totalRecords={totalProducts}
+                      pageLimit={pageLimit}
+                      pageNeighbours={2}
+                      setOffset={setOffset}
+                      currentPage={currentPage}
+                      setCurrentPage={setCurrentPage}
+                      pageContainerClass="mb-0 mt-0"
+                      pagePrevText="«"
+                      pageNextText="»"
+                    />
+                  </div>
+                </Col>
+              </Row>
+            </Container>
+          </div>
         </div>
-      </div>
+      )}
       <Row style={{ paddingLeft: "20px", paddingRight: "20px" }}>
         <Col xl={4} lg={4} style={{ paddingLeft: "0px", paddingRight: "0px" }}>
           <div className="about-page-2-image space-mb-mobile-only--50">

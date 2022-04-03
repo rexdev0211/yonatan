@@ -1,6 +1,8 @@
+const withPlugins = require('next-compose-plugins');
 const withTM = require('next-transpile-modules')(['react-360-view']);
+const nextTranslate = require('next-translate');
 
-module.exports = withTM({
+const nextConfig = {
   env: {
     PUBLIC_URL: process.env.PUBLIC_URL,
     API_BASE_URL: process.env.API_BASE_URL
@@ -13,4 +15,12 @@ module.exports = withTM({
 
     return config;
   }
-});
+};
+
+module.exports = withPlugins(
+  [
+    [withTM, {transpileModules: []}],
+    nextTranslate,
+  ],
+  nextConfig
+);

@@ -1,6 +1,6 @@
 import { Col, Container, Row } from "react-bootstrap";
 
-const ImageCtaFirst = ({ spaceBottomClass }) => {
+const ImageCtaFirst = ({ t, spaceBottomClass }) => {
   return (
     <div className="about-content space-mb--r100">
       <Container className="wide">
@@ -27,7 +27,7 @@ const ImageCtaFirst = ({ spaceBottomClass }) => {
           </Col>
           <Col xl={6} lg={6} className="ml-auto" style={{ display: "flex", alignItems: "center" }}>
             <div className="about-widget ">
-              <h2 className="widget-title space-mb--25 fontStyleMain">Touch Happiness and Diamond</h2>
+              <h2 className="widget-title space-mb--25 fontStyleMain">{t('touch-happiness-and-diamond')}</h2>
               <p className="widget-content fontStyleDetail">
                 There are moments in life that are etched deep in our hearts - today they can be published, as a personal and prestigious piece of jewelry that has an aesthetic and emotional meaning.
               </p>

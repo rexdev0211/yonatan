@@ -17,7 +17,7 @@ class MyApp extends App {
   constructor(props) {
     super(props);
     this.persistor = persistStore(props.reduxStore);
-    props.reduxStore.dispatch(fetchProducts(products));
+    // props.reduxStore.dispatch(fetchProducts(products));
   }
 
   render() {
