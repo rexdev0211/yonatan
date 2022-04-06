@@ -60,7 +60,7 @@ const ImageGallerySticky = ({
                 <div key={i}>
                   <LightgalleryItem
                     group="any"
-                    src={process.env.PUBLIC_URL + image}
+                    src={process.env.BACKEND_PUBLIC_URL + image}
                   >
                     <Tooltip
                       title="Click to enlarge"
@@ -77,7 +77,7 @@ const ImageGallerySticky = ({
                   </LightgalleryItem>
                   <div className="single-image space-mb--10">
                     <img
-                      src={process.env.PUBLIC_URL + image}
+                      src={process.env.BACKEND_PUBLIC_URL + image}
                       className="img-fluid"
                       alt=""
                     />

@@ -87,7 +87,7 @@ const ImageGalleryRightThumb = ({
                     <div key={i}>
                       <div className="single-image">
                         <img
-                          src={process.env.PUBLIC_URL + image}
+                          src={process.env.BACKEND_PUBLIC_URL + image}
                           className="img-fluid"
                           alt=""
                         />
@@ -152,7 +152,7 @@ const ImageGalleryRightThumb = ({
                       <div key={i}>
                         <LightgalleryItem
                           group="any"
-                          src={process.env.PUBLIC_URL + image}
+                          src={process.env.BACKEND_PUBLIC_URL + image}
                         >
                           <Tooltip
                             title="Click to enlarge"
@@ -169,7 +169,7 @@ const ImageGalleryRightThumb = ({
                         </LightgalleryItem>
                         <div className="single-image">
                           <img
-                            src={process.env.PUBLIC_URL + image}
+                            src={process.env.BACKEND_PUBLIC_URL + image}
                             className="img-fluid"
                             alt=""
                           />

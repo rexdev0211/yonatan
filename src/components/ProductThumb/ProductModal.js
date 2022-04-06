@@ -64,7 +64,7 @@ const ProductModal = (props) => {
                   <div key={key}>
                     <div className="single-image">
                       <img
-                        src={process.env.PUBLIC_URL + single}
+                        src={process.env.BACKEND_PUBLIC_URL + single}
                         className="img-fluid"
                         alt=""
                       />
