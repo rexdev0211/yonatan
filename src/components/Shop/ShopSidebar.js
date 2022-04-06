@@ -135,7 +135,7 @@ const ShopSidebar = ({ categories, colors, popularProducts, searchProducts, getS
                       >
                         <a className="image-wrap">
                           <img
-                            src={process.env.PUBLIC_URL + product.thumbImage[0]}
+                            src={process.env.BACKEND_PUBLIC_URL + product.thumbImage[0]}
                             className="img-fluid"
                             alt={product.name}
                           />

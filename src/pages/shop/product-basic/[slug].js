@@ -108,7 +108,7 @@ const ProductBasic = ({
                 />
               </Col>
 
-              <ThreeSixty
+              {/* <ThreeSixty
                 amount={8}
                 imagePath={
                   process.env.PUBLIC_URL +
@@ -116,7 +116,7 @@ const ProductBasic = ({
                 }
                 fileName="h_ring_{index}.jpg"
                 spinReverse
-              />
+              /> */}
 
               <Col lg={6}>
                 <ProductDescription

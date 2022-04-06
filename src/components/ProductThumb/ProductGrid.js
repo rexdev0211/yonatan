@@ -42,13 +42,13 @@ const ProductGrid = ({
             >
               <a className="image-wrap">
                 <img
-                  src={process.env.PUBLIC_URL + product.thumbImage[0]}
+                  src={process.env.BACKEND_PUBLIC_URL + product.thumbImage[0]}
                   className="img-fluid"
                   alt={product.name}
                 />
                 {product.thumbImage.length > 1 ? (
                   <img
-                    src={process.env.PUBLIC_URL + product.thumbImage[1]}
+                    src={process.env.BACKEND_PUBLIC_URL + product.thumbImage[1]}
                     className="img-fluid"
                     alt={product.name}
                   />
