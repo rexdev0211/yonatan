@@ -1,18 +1,18 @@
-import Link from "next/link";
 import useTranslation from 'next-translate/useTranslation';
+import Link from "next/link";
 import { Fragment, useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import {
   IoIosArrowDown, IoIosCart, IoIosHeartEmpty, IoIosMenu, IoIosSearch, IoMdPerson
 } from "react-icons/io";
 import { connect } from "react-redux";
+import i18nConfig from '../../../i18n';
 import UserIcon from '../../../public/assets/images/yonatan-images/user.svg';
 import AboutOverlay from "./elements/AboutOverlay";
 import CartOverlay from "./elements/CartOverlay";
 import MobileMenu from "./elements/MobileMenu";
 import SearchOverlay from "./elements/SearchOverlay";
 import WishlistOverlay from "./elements/WishlistOverlay";
-import i18nConfig from '../../../i18n';
 
 const { locales } = i18nConfig;
 
